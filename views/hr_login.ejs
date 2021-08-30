@@ -358,18 +358,18 @@ input {
 		
 	<div class="container" id="container">
       <div class="form-container sign-up-container">
-        <form>
+        <form action="/register" method="POST">
           <h1>Sign Up</h1>
           <div class="social-container">
-            <a href="#" class="social"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social"><i class="fab fa-google"></i></a>
-            <a href="#" class="social"><i class="fab fa-tiktok"></i></a>
+     <a href="https://img.icons8.com/bubbles/50/000000/user.png" class="social"><i class="fab fa-instagram"></i><img src="https://img.icons8.com/bubbles/50/000000/user.png"/></a>
+
+           
           </div>
-          <span>or use your email for registration</span>
-          <input type="text" placeholder="Name" />
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
-          <button onclick="return false;">Sign Up</button>
+          <span>Use your Intern Id to Sign Up !</span>
+          <input type="text" placeholder="Intern ID" name="InternID"/>
+          <input type="text" placeholder="Username" name="username" />
+          <input type="password" placeholder="Password" name="password" />
+          <button type="submit">Sign Up</button>
         </form>
       </div>
       <div class="form-container sign-in-container">
@@ -377,12 +377,11 @@ input {
         <form action="/login" method="POST">
           <h1>Sign In</h1>
           <div class="social-container">
-            <a href="#" class="social"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social"><i class="fab fa-google"></i></a>
-            <a href="#" class="social"><i class="fab fa-tiktok"></i></a>
+            <a href="https://img.icons8.com/bubbles/50/000000/user.png" class="social"><i class="fab fa-instagram"></i><img src="https://img.icons8.com/bubbles/50/000000/user.png"/></a>
+           
           </div>
           <span>or use your account</span>
-          <input type="text" placeholder="Employee ID" name="username"/>
+          <input type="text" placeholder="username" name="username"/>
           <input type="password" placeholder="Password" name="password" />
           <a href="#">Forgot your password?</a>
           <button type="submit" >Sign In</button>
@@ -393,14 +392,14 @@ input {
       <div class="overlay-container">
         <div class="overlay">
           <div class="overlay-panel overlay-left">
-            <h1>Hmm Stop playing with me!</h1>
-            <p>I guess you should get back to work !</p>
-            <button class="ghost" id="signIn">Ok</button>
+            <h1>Welcome Intern !</h1>
+            <p>The entire team of Education4ol is thrilled to welcome you on board. We hope you’ll do some amazing works here!</p>
+            <button class="ghost" id="signIn">Sign In</button>
           </div>
           <div class="overlay-panel overlay-right">
-            <h1>Education4ol's HR!</h1>
-            <p>HR Dashboard ! One stop solution to all your stumbling block , developed by <b>UpClick Labs pvt. Ldt.</b></p>
-            <button class="ghost" id="signUp">Good Luck !</button> 
+            <h1>Education4ol's IDASH !</h1>
+            <p>A warm welcome and lots of good wishes on becoming part of our growing team. Congratulations and on behalf of all the members. We are all happy and excited about your inputs and contribution to <b>Education4ol</b>.</p>
+            <button class="ghost" id="signUp">Sign Up</button> 
           </div>
         </div>
 		

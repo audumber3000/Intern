@@ -15,6 +15,7 @@ router.use(flash())
 
 //importing all the sechma from model file
 var User = require("../models/user")
+var interninfo_final = require("../models/Interinfo")
 
 
 router.get("/login" , function(req,res){
@@ -44,8 +45,9 @@ router.get("/login_failed" , function(req,res){
 
 
 router.get("/wel",function(req, res){
-
-	res.render("hrdashboard")
+     // res.redirect("/social");
+	req.flash("success","Success : Login Successfully !");
+	res.render("portal_intern/blogs")
 })
 router.get("/not-wel",function(req, res){
 res.render("not-welcome" , {CurrentUser:req.user})
@@ -58,33 +60,54 @@ router.get("/register" ,function(req,res){
 	res.render("register" , {CurrentUser:req.user})
 	})
 
-router.post("/register" ,function(req,res){
+router.post("/register" ,async function(req,res){
 
 
-   console.log(req.body.passport);
+   console.log(req.body.password);
    console.log(req.body.username);
- 
+ console.log(req.body.InternID);
   
   
    //if condition satisied then only register
 
 
-  var newUser  = new User({username:req.body.username });
+  var newUser  = new User({username:req.body.username , InternID:req.body.InternID});
+	
+  var result1 = await interninfo_final.findOne({InternID:req.body.InternID }, function (err, docs) {
+    if (err){
+        console.log(err)
+    }
+   
+});
+	
+	 var result2 = await User.findOne({InternID:req.body.InternID }, function (err, docs) {
+    if (err){
+        console.log(err)
+    }
+  
+});
+	
+	
+	console.log("Result1 : ", result2);
 
-  User.register(newUser ,req.body.password, function(err,user){
-    
+	if(result1 != null && result2 == null){
+		
+	User.register(newUser ,req.body.password, function(err,user){
     console.log(req.body.password);
     if(err){
       console.log("smthing went wrong")
-       
-    }
-
-
+     }else{
     passport.authenticate("local")(req,res,function(){
-	
-    res.redirect("/wel")
-    })
-})
+	res.redirect("/wel")
+    });
+	 }
+
+ })
+	}
+	else{
+		console.log("Entern Details are incorrect !")
+	}
+
 
 
 
@@ -102,7 +125,7 @@ function isLoggedIn(req, res, next) { //next is the next thing that needs to be 
     if (req.isAuthenticated()){
         return next();
     }
-	  req.flash("error_msg","OOPS!! Entered crediantials are Incorrect!")
+	req.flash("error_msg","OOPS!! Entered crediantials are Incorrect!")
     res.redirect("/login");
 }
 

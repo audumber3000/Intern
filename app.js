@@ -65,25 +65,44 @@ passport.deserializeUser(User.deserializeUser());
 app.use(express.static("public"));
 // code to set up passport to work in our app -> THESE TWO cdMETHODS/LINES ARE REQUIRED EVERY TIME
 
+app.use((req,res,next)=>{
+  res.locals.success= req.flash('success')
+  res.locals.failed= req.flash('failed')
+  res.locals.signup= req.flash('signup')
+  res.locals.clear= req.flash('clear')
+  res.locals.error_msg= req.flash('error_msg')
+
+  next();
+});
 
 //-----------------------------routes
-const account_details = require('./routes/demo');
+const auth = require('./routes/authentication')
+app.use("/" , auth);
+
+
+const account_details = require('./routes/blogs');
 app.use("/" , account_details);
 
-const assign_upload = require('./routes/assign_upload');
-app.use("/" , assign_upload);
+const activities = require('./routes/activities');
+app.use("/" , activities);
 
-const intern_details = require('./routes/intern_details');
-app.use("/" , intern_details);
+const blogs = require('./routes/blogs');
+app.use("/" , blogs);
 
-const intern_hiring = require('./routes/intern_hiring');
-app.use("/" , intern_hiring);
+const courses = require('./routes/courses');
+app.use("/" , courses);
 
-const hrdashboard_hiring = require('./routes/hrdashboard_hiring');
-app.use("/" , hrdashboard_hiring);
+const payments = require('./routes/payments');
+app.use("/" , payments);
 
-const auth_hiring = require('./routes/authentication');
-app.use("/" , auth_hiring);
+const reports = require('./routes/reports');
+app.use("/" , reports);
+
+const settings = require('./routes/settings');
+app.use("/" , settings);
+
+
+
 
 //show sign up form
 app.get("/instagram", function(req, res){
@@ -395,18 +414,18 @@ function isLoggedIn(req, res, next) { //next is the next thing that needs to be 
 
 
 
-// app.listen(3000,function(err){
-// 	if(err){
-// 		console.log("server connection error!!")
-// 		console.log("Reconnecting . . . ")
-// 	}else{
-// 		console.log("connecting . . . ")
-// 		console.log("connected successfully")
-// 	}
-// })
+app.listen(3000,function(err){
+	if(err){
+		console.log("server connection error!!")
+		console.log("Reconnecting . . . ")
+	}else{
+		console.log("connecting . . . ")
+		console.log("connected successfully")
+	}
+})
 
 
 
-app.listen(process.env.PORT, process.env.IP, function(){
-    console.log("server started...")
-});
+// app.listen(process.env.PORT, process.env.IP, function(){
+//     console.log("server started...")
+// });
