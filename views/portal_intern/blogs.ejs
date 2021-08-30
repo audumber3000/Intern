@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education4ol | Intern Dashboard</title>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+	
+	
+
+    <style>
+		body{
+			 background-color:#F8F8F8;
+		}
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            padding: 90px 0 0;
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+            z-index: 99;
+        }
+
+        @media (max-width: 767.98px) {
+            .sidebar {
+                top: 11.5rem;
+                padding: 0;
+            }
+        }
+            
+        .navbar {
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .1);
+        }
+
+        @media (min-width: 767.98px) {
+            .navbar {
+                top: 0;
+                position: sticky;
+                z-index: 999;
+            }
+        }
+
+        .sidebar .nav-link {
+            color: #333;
+        }
+
+        .sidebar .nav-link.active {
+            color: #0d6efd;
+        }
+	a.active.nav-link{
+		background-color: #BB86FC !important;
+		
+		}
+		
+	a.nav-link{
+		
+		  padding-top: 3px; 
+    padding-bottom: 3px;
+		}
+  
+
+    </style>
+</head>
+<body>
+	
+
+	
+   <nav class="navbar navbar-light .bg-dark.bg-gradient p-3">
+        <div class="d-flex col-12 col-md-3 col-lg-2 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
+            <a class="navbar-brand" href="#">
+				<img src="https://res.cloudinary.com/education4ol/image/upload/v1624697903/education4ol_vuw0rx.jpg"/>
+               <b style="color:white;">Education4ol</b>
+            </a>
+            <button class="navbar-toggler d-md-none collapsed mb-3" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="col-12 col-md-4 col-lg-2">
+            <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
+        </div>
+        <div class="col-12 col-md-5 col-lg-8 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
+            <div class="mr-3 mt-1">
+                <a class="github-button" href="#" data-color-scheme="no-preference: dark; light: light; dark: light;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="0">00</a>
+            </div>
+            <div class="dropdown">
+                  <button class="btn dropdown-toggle" style="background-color: midnightblue; color:white ;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                  Hi 
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<li>
+					<!-- <form action="/intern_profile"  method="POST"  >
+						<input type="hidden" id="adu" name="internid" value=   >
+				<button type="submit" class="dropdown-item">Profile</button>
+
+					</form> -->
+						</li>
+                  <li><a class="dropdown-item" href="/assignment_display">Tasks</a></li>
+                  <li><a class="dropdown-item" href="/intern_messager">Messages</a></li>
+                  <li><a class="dropdown-item" href="https://education4ol.com">Sign out</a></li>
+                </ul>
+              </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block .bg-dark.bg-gradient sidebar collapse" style="background-color: midnightblue;">
+                <div class="position-sticky">
+                    <ul class="nav flex-column" style="background-color: midnightblue; ">
+                        <li class="nav-item" style="  ">
+                          <a class="nav-link" aria-current="page" href="/dashboard" style="color:white">
+							  <div style="padding:5px">
+								  <img src="https://img.icons8.com/ios/25/FFFFFF/circled-menu.png"/>
+                            <span class="ml-2">Dashboard</span>
+							  </div>
+                            
+                          </a>
+                        </li>
+                    
+                      
+                        <li class="nav-item">
+                          <a class="nav-link" href="/blogs" style="color:white">
+							  <div style="background-color:#BB86FC ; padding:5px ; color:black ; border-radius:4px">
+								  <img src="https://img.icons8.com/ios-filled/25/000000/google-blog-search.png"/>
+                            <span class="ml-2"><b>Blogs</b></span>
+							  </div>
+                            
+                          </a>
+                        </li>
+                   
+                  
+                        <li class="nav-item">
+                          <a class="nav-link" href="/courses" style="color:white">
+							  <div style="padding:5px ">
+                          <img src="https://img.icons8.com/ios/25/FFFFFF/course-assign.png"/>
+                            <span class="ml-2">Courses</span>
+							  </div>
+                          </a>
+                        </li>
+						
+						
+						 <li class="nav-item">
+                          <a class="nav-link" href="#" style="color:white">
+							  <div style="padding:5px ">
+                           <img src="https://img.icons8.com/ios/25/FFFFFF/task.png"/>
+                            <span class="ml-2">Projects</span>
+							  </div>
+                          </a>
+                        </li>
+						
+						
+						 <li class="nav-item">
+                          <a class="nav-link" href="/reports" style="color:white">
+							  <div style="padding:5px ">
+                            <img src="https://img.icons8.com/ios/25/FFFFFF/pie-chart.png"/>
+                            <span class="ml-2">Reports</span>
+							  </div>
+                          </a>
+                        </li>
+						
+						
+						
+						 <li class="nav-item">
+                          <a class="nav-link" href="/payments" style="color:white">
+							  <div style="padding:5px ">
+                            <img src="https://img.icons8.com/ios/25/FFFFFF/visa.png"/>
+                            <span class="ml-2">Payments</span>
+							  </div>
+							
+                          </a>
+                        </li>
+						
+						
+						
+						 <li class="nav-item">
+                          <a class="nav-link" href="/activites" style="color:white">
+							  <div style="padding:5px ">
+                            <img src="https://img.icons8.com/ios/25/FFFFFF/under-computer.png"/>
+                            <span class="ml-2">Activities</span>
+							  </div>
+                          </a>
+                        </li>
+						
+						
+						 <li class="nav-item">
+                          <a class="nav-link" href="/settings" style="color:white">
+                            <div style="padding:5px ">
+								<img src="https://img.icons8.com/ios/25/FFFFFF/settings.png"/>
+                            <span class="ml-2">Settings</span>
+							  </div>
+                          </a>
+                        </li>
+                       
+
+                      
+                      </ul>
+                </div>
+				<div style="margin-top: 25px; font-size: 12px;text-align: center; margin-bottom: -50px; color:white">
+					 <li class="nav-item">
+                           Powered by <b>UpClick Labs </b>
+                        </li>
+					<p>
+						
+					</p>
+					
+				</div>
+            </nav>
+            <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+				
+		
+		
+				
+		
+  
+  <!-- Nav pills -->
+				<p>
+					<%= success.length %>
+				</p>
+	<div class="container">
+<%if(success && success.length){%>
+	<div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align:center">
+	  <span ><svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-check2-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
+</svg>  <%=success%></span>
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+<%}%>
+
+<%if(clear && clear.length){%>
+	<div class="alert alert-primary alert-dismissible fade show" role="alert" style="text-align:center">
+	  <span ><svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-check2-all" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M12.354 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  <path d="M6.25 8.043l-.896-.897a.5.5 0 1 0-.708.708l.897.896.707-.707zm1 2.414l.896.897a.5.5 0 0 0 .708 0l7-7a.5.5 0 0 0-.708-.708L8.5 10.293l-.543-.543-.707.707z"/>
+</svg>  <%=clear%></span>
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+<%}%>
+</div>				
+				
+				
+  <ul class="nav nav-pills" role="tablist">
+    <li class="nav-item" style="color:midnightblue">
+      <a class="nav-link active" data-toggle="pill" href="#home" style="color:midnightblue">Feeds</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#menu1" style="color:midnightblue">Friends</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#menu2" style="color:midnightblue">Chats</a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div id="home" class=" tab-pane active"><br>
+      <h3>HOME</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div id="menu1" class="tab-pane fade"><br>
+      <h3>Menu 1</h3>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div id="menu2" class=" tab-pane fade"><br>
+      <h3>Menu 2</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+  </div>
+
+
+
+				
+				
+				
+				
+				
+				
+				
+				
+               
+            </main>
+        </div>
+    </div>
+	
+	
+	
+	
+
+	
+	
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script>
+      
+    </script>
+</body>
+</html>
